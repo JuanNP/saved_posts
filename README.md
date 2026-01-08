@@ -78,6 +78,9 @@ export IG_SESSIONFILE="mi_sesion.session"
 # Personalizar tiempo de espera entre requests (opcional, default: 3 segundos)
 export IG_SLEEP=5
 
+# Solo extraer posts con videos/reels (opcional)
+export IG_VIDEOS_ONLY=1
+
 # Personalizar User-Agent (opcional)
 export IG_UA="Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15"
 
@@ -100,6 +103,17 @@ python saved_posts.py
 # Extraer solo los primeros 50 posts
 export IG_USERNAME="mi_usuario"
 export IG_MAX=50
+python saved_posts.py
+
+# Extraer solo posts con videos (reels)
+export IG_USERNAME="mi_usuario"
+export IG_VIDEOS_ONLY=1
+python saved_posts.py
+
+# Extraer solo los primeros 30 videos guardados
+export IG_USERNAME="mi_usuario"
+export IG_VIDEOS_ONLY=1
+export IG_MAX=30
 python saved_posts.py
 ```
 
@@ -131,15 +145,16 @@ Si tu cuenta tiene 2FA habilitado, el script usará el modo interactivo para com
 
 ## ⚙️ Variables de Entorno
 
-| Variable         | Descripción                       | Valor por Defecto                                    |
-| ---------------- | --------------------------------- | ---------------------------------------------------- |
-| `IG_USERNAME`    | Nombre de usuario de Instagram    | Se solicita interactivamente                         |
-| `IG_PASSWORD`    | Contraseña de Instagram           | Se solicita interactivamente (solo si no hay sesión) |
-| `IG_MAX`         | Límite de posts a extraer         | `None` (sin límite)                                  |
-| `IG_CSV`         | Nombre del archivo CSV de salida  | `saved_posts_{usuario}.csv`                          |
-| `IG_SESSIONFILE` | Nombre del archivo de sesión      | `{usuario}.session`                                  |
-| `IG_SLEEP`       | Segundos de espera entre requests | `3`                                                  |
-| `IG_UA`          | User-Agent personalizado          | User-Agent de iPhone por defecto                     |
+| Variable         | Descripción                           | Valor por Defecto                                    |
+| ---------------- | ------------------------------------- | ---------------------------------------------------- |
+| `IG_USERNAME`    | Nombre de usuario de Instagram        | Se solicita interactivamente                         |
+| `IG_PASSWORD`    | Contraseña de Instagram               | Se solicita interactivamente (solo si no hay sesión) |
+| `IG_MAX`         | Límite de posts a extraer             | `None` (sin límite)                                  |
+| `IG_VIDEOS_ONLY` | Solo extraer posts con videos (reels) | `false` (extrae todos los posts)                     |
+| `IG_CSV`         | Nombre del archivo CSV de salida      | `saved_posts_{usuario}.csv`                          |
+| `IG_SESSIONFILE` | Nombre del archivo de sesión          | `{usuario}.session`                                  |
+| `IG_SLEEP`       | Segundos de espera entre requests     | `3`                                                  |
+| `IG_UA`          | User-Agent personalizado              | User-Agent de iPhone por defecto                     |
 
 ## 📁 Estructura del Proyecto
 
